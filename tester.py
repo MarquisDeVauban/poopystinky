@@ -1,0 +1,14 @@
+import requests
+
+'''JWT Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaWQiOiJwQ2pjdE5tUDIwY1NQRUJMNGxqUmJyb1hiRlcwdnRWcyIsImNzcmZfdG9rZW4iOiIxYWIwOTM0ZjdjODQwN2YwYmQ0ZmRkMDEyY2RlYmRjOThlZGYyMTU4IiwiZXhwIjoxNjI4NzMwOTkwLCJpYXQiOjE2MjM1NDY5OTAsImlzcyI6Imp3dCIsImF1ZCI6Imp3dCIsImF1dGhfdHlwZSI6ImNvb2tpZSIsInNlY3VyZSI6ZmFsc2UsImxvZ2luX3VhIjoiYidNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvOTEuMC40NDcyLjc3IFNhZmFyaS81MzcuMzYnIiwibG9naW5faXAiOiJiJzQ3LjIwNS42Ny4yMTYnIiwiand0X2lkZW50aXR5IjoiS0lSUUtwMWcxVU5PTGI0V1dhakQwUU1KNmN1aGFQOFAifQ.l4ExNAJDhbw2fRgCM8sTyxXku0TxuxTxJtG-zzjXVEk'''
+
+thingies = {
+
+'language': 'en',
+'platform': 'pc',
+
+}
+
+thingy = requests.get('https://api.warframe.market/v1/items/trinity_prime_blueprint/orders', headers=thingies).json()
+
+print(thingy)
