@@ -10,14 +10,14 @@ thingy = requests.get('https://api.warframe.market/v1/items').json()
 itemList = []
 dt = datetime.datetime.today()
 months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-month = 'null'
+month = ''
 dbDict = {}
 con = sqlite3.connect('itemDataBase.db')
 cursor = con.cursor()
 
-for thingy in months:
-    if dt.month == 1 + months.index(thingy):
-        month = months[months.index(thingy)]
+for thingy0 in months:
+    if dt.month == 1 + months.index(thingy0):
+        month = months[months.index(thingy0)]
 
 #loop assigns word months to numbers cuz i dont like numbers - 16 Jun 21
 
@@ -53,7 +53,8 @@ for url in itemList:
 
     #if/else sets the median, has else case in case there are no offers since median must have an argument - 16 Jun 21
 
-    cursor.execute(f'INSERT INTO stuff VALUES ({url}, {dt.day} {month} {dt.year}, {median})')
+    cursor.execute(f'INSERT INTO stuff (Item_Url, Date, Median) VALUES ("{url}", "{dt.day} {month} {dt.year}", "{median}")')
+    con.commit()
 
     #commits the data into the sql database - 16 Jun 21
 
@@ -68,3 +69,4 @@ for url in itemList:
 #loop creates dictionary of all item urls and pairs them with dictionaries for median - need to add in averages and other stuff - 14 Jun 21
 #function to add the data to the sql database has been added, forego averages for now - 16 Jun 21
 print(dbDict)
+con.close()
